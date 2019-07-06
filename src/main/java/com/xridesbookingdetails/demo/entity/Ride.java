@@ -1,84 +1,86 @@
 package com.xridesbookingdetails.demo.entity;
 
-import java.sql.Timestamp;
-
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 
 //This is the entity that describes the record to be dealt in our case.
-@Entity
-@Table(name = "ridedemo")
+@Document(collection = "Rides")
 public class Ride {
 	
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	/*
+	 * @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 */	
 	
-	@Column(name = "user_id")
+	@Id
+	private String id;
+	
+	/* @Column(name = "user_id") */
 	private int user_id;
 	
-	@Column(name = "vehicle_model_id")
+	/* @Column(name = "vehicle_model_id") */
 	private int vehicle_model_id;
 	
-	@Column(name = "package_id", nullable = true)
-	private String package_id;
+	/*
+	 * @Column(name = "package_id", nullable = true)
+	 */	private String package_id;
 	
-	@Column(name = "travel_type_id")	
+	/* @Column(name = "travel_type_id") */	
 	private int travel_type_id;
 	
-	@Column(name = "from_area_id", nullable = true)
+	/* @Column(name = "from_area_id", nullable = true) */
 	private String from_area_id;
 	
-	@Column(name = "to_area_id", nullable = true)
+	/* @Column(name = "to_area_id", nullable = true) */
 	private String to_area_id;
 	
-	@Column(name = "from_city_id", nullable = true)
+	/* @Column(name = "from_city_id", nullable = true) */
 	private String from_city_id;
 	
-	@Column(name = "to_city_id", nullable = true)
+	/* @Column(name = "to_city_id", nullable = true) */
 	private String to_city_id;
 	
-	@Column(name = "from_date")
-	private java.sql.Timestamp from_date;
+	/* @Column(name = "from_date") */
+	private String from_date;
 	
-	@Column(name = "to_date", nullable = true)
-	private java.sql.Timestamp to_date;
+	/* @Column(name = "to_date", nullable = true) */
+	private String to_date;
 	
-	@Column(name = "online_booking")
+	/* @Column(name = "online_booking") */
 	private int online_booking;
 	
 	
-	@Column(name = "mobile_site_booking")
+	/* @Column(name = "mobile_site_booking") */
 	private int mobile_site_booking;
 	
-	@Column(name = "booking_created")
-	private java.sql.Timestamp booking_created;
+	/* @Column(name = "booking_created") */
+	private String booking_created;
 	
 	
-	@Column(name = "from_lat", nullable = true)
+	/* @Column(name = "from_lat", nullable = true) */
 	private String from_lat;
 	
-	@Column(name = "from_long", nullable = true)
+	/* @Column(name = "from_long", nullable = true) */
 	private String from_long;
 	
-	@Column(name = "to_lat", nullable = true)
+	/* @Column(name = "to_lat", nullable = true) */
 	private String to_lat;
 	
-	@Column(name = "to_long", nullable = true)
+	/* @Column(name = "to_long", nullable = true) */
 	private String to_long;
 	
-	@Column(name = "car_cancellation")
+	/* @Column(name = "car_cancellation") */
 	private int car_cancellation;
 
 	public Ride() {}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(String i) {
+		this.id = i;
 	}
 
 	public int getUser_id() {
@@ -145,19 +147,19 @@ public class Ride {
 		this.to_city_id = to_city_id;
 	}
 
-	public java.sql.Timestamp getFrom_date() {
+	public String getFrom_date() {
 		return from_date;
 	}
 
-	public void setFrom_date(java.sql.Timestamp from_date) {
+	public void setFrom_date(String from_date) {
 		this.from_date = from_date;
 	}
 
-	public java.sql.Timestamp getTo_date() {
+	public String getTo_date() {
 		return to_date;
 	}
 
-	public void setTo_date(java.sql.Timestamp to_date) {
+	public void setTo_date(String to_date) {
 		this.to_date = to_date;
 	}
 
@@ -177,11 +179,11 @@ public class Ride {
 		this.mobile_site_booking = mobile_site_booking;
 	}
 
-	public java.sql.Timestamp getBooking_created() {
+	public String getBooking_created() {
 		return booking_created;
 	}
 
-	public void setBooking_created(java.sql.Timestamp booking_created) {
+	public void setBooking_created(String booking_created) {
 		this.booking_created = booking_created;
 	}
 
@@ -226,8 +228,8 @@ public class Ride {
 	}
 
 	public Ride(int user_id, int vehicle_model_id, String package_id, int travel_type_id, String from_area_id,
-			String to_area_id, String from_city_id, String to_city_id, Timestamp from_date, Timestamp to_date,
-			int online_booking, int mobile_site_booking, Timestamp booking_created, String from_lat, String from_long,
+			String to_area_id, String from_city_id, String to_city_id, String from_date, String to_date,
+			int online_booking, int mobile_site_booking, String booking_created, String from_lat, String from_long,
 			String to_lat, String to_long, int car_cancellation) {
 		super();
 		this.user_id = user_id;
@@ -248,6 +250,11 @@ public class Ride {
 		this.to_lat = to_lat;
 		this.to_long = to_long;
 		this.car_cancellation = car_cancellation;
+	}
+
+	public void setId(int i) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

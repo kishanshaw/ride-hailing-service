@@ -40,7 +40,7 @@ public class RideRestController {    //this is the main controller that handles 
 	 * it returns an error response if the record fails to get added with error details
 	 */
 	@GetMapping("/rides/{id}")
-	public Ride getRideById(@PathVariable int id) throws RideNotFoundException{
+	public Ride getRideById(@PathVariable String id) throws RideNotFoundException{
 		Optional<Ride> result = rideJPARepository.findById(id);
 		Ride ride = null;
 		if(result.isPresent())
@@ -57,7 +57,6 @@ public class RideRestController {    //this is the main controller that handles 
 	 */
 	@PostMapping("/rides")
 	public Response addRide(@RequestBody Ride ride, WebRequest request )  throws Exception{
-		ride.setId(0);
 		Ride newRide=rideJPARepository.save(ride);
 		if(newRide != null) {
 			return new Response(new Date(), "Ride got added", request.getDescription(false));
@@ -92,7 +91,7 @@ public class RideRestController {    //this is the main controller that handles 
 	 * and it returns an acknowledgement on a successful operation or a response if the record fails to get updated with error details.
 	 */
 	@DeleteMapping("/rides/{id}")
-	public Response deleteRideById(@PathVariable int id, WebRequest request ) throws RideNotFoundException {
+	public Response deleteRideById(@PathVariable String id, WebRequest request ) throws RideNotFoundException {
 		Optional<Ride> existingRide = rideJPARepository.findById(id); 
 		if(existingRide.isPresent()) {
 				rideJPARepository.deleteById(id);
